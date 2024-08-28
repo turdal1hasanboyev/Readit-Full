@@ -1,6 +1,7 @@
 from django.db import models
 
 import uuid
+
 from django.urls import reverse
 from django.template.defaultfilters import slugify
 
