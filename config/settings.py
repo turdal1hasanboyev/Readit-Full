@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'apps.user',
     "apps.base",
     'apps.article',
+    'apps.contact',
 ]
 
 DJANGO_QUERY_COUNTER = {
