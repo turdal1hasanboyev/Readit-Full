@@ -13,6 +13,7 @@ class CategoryAdmin(admin.ModelAdmin):
         'name',
         'created_at',
     )
+
     prepopulated_fields = {'slug': ('name',)}
 
 
@@ -23,6 +24,7 @@ class TagAdmin(admin.ModelAdmin):
         'name',
         'created_at',
     )
+
     prepopulated_fields = {'slug': ('name',)}
 
 
@@ -36,4 +38,5 @@ class ArticleAdmin(admin.ModelAdmin):
         'views',
         'created_at',
     )
+    
     prepopulated_fields = {'slug': ('name',)}

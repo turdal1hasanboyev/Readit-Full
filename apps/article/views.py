@@ -10,7 +10,7 @@ def home(request):
 
     articles = Article.objects.filter(is_active=True).order_by('name')
 
-    paginator = Paginator(articles, 1)
+    paginator = Paginator(articles, 10)
     selected_page = paginator.get_page(page_number)
     selected_page.adjusted_elided_pages = paginator.get_elided_page_range(page_number)
 
@@ -19,11 +19,12 @@ def home(request):
 def single(request, slug):
     cat = request.GET.get('cat')
     tag = request.GET.get('tag')
-    query = request.GET.get("search")
+    query = request.POST.get("search")
 
     article = Article.objects.filter(is_active=True, slug__iexact=slug).first()
 
     article.views +=1
+
     article.save()
 
     comments = Comment.objects.filter(is_active=True, article_id=article.id).order_by("-id")
@@ -54,7 +55,7 @@ def home_2(request):
 
     articles = Article.objects.filter(is_active=True).order_by('name')
 
-    paginator = Paginator(articles, 1)
+    paginator = Paginator(articles, 10)
     selected_page = paginator.get_page(page_number)
     selected_page.adjusted_elided_pages = paginator.get_elided_page_range(page_number)
 
@@ -65,7 +66,7 @@ def article(request):
 
     articles = Article.objects.filter(is_active=True).order_by('id')
 
-    paginator = Paginator(articles, 1)
+    paginator = Paginator(articles, 10)
     selected_page = paginator.get_page(page_number)
     selected_page.adjusted_elided_pages = paginator.get_elided_page_range(page_number)
 

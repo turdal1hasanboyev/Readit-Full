@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');"
+<div class="hero-wrap js-fullheight" style="background-image: url('{% static '' %}images/bg_1.jpg');"
     data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
@@ -20,7 +20,7 @@
                                 there live the blind texts. Separated they live in Bookmarksgrove right at the coast of
                                 the Semantics, a large language ocean.</p>
                             <div class="mouse">
-                                <a href="#" class="mouse-icon">
+                                <a href="{% url 'home_2' %}" class="mouse-icon">
                                     <div class="mouse-wheel"><span class="ion-ios-arrow-round-down"></span></div>
                                 </a>
                             </div>
@@ -64,7 +64,9 @@
                 {% endfor %}
             </div>
         </div>
+
         {% include 'paginator.html' %}
+
     </div>
 </section>
 

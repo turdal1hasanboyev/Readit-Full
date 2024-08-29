@@ -16,7 +16,7 @@ class Tag(BaseModel):
 
     def save(self, *args, **kwargs):  
         if not self.slug:
-            self.slug = f"{slugify(self.name)}-{uuid.uuid4()}"
+            self.slug = slugify(self.name)
 
         return super().save(*args, **kwargs)
     
@@ -30,7 +30,7 @@ class Category(BaseModel):
 
     def save(self, *args, **kwargs):  
         if not self.slug:
-            self.slug = f"{slugify(self.name)}-{uuid.uuid4()}"
+            self.slug = slugify(self.name)
 
         return super().save(*args, **kwargs)
     
@@ -43,8 +43,8 @@ class Article(BaseModel):
     slug = models.SlugField(max_length=225, null=True, blank=True, unique=True, db_index=True)
     description = RichTextField(null=True, blank=True)
     image = models.ImageField(upload_to="article_photos/", null=True, blank=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
-    tags = models.ManyToManyField(Tag, related_name='articles', blank=True)
+    category = models.ForeignKey(to=Category, on_delete=models.CASCADE, null=True, blank=True)
+    tags = models.ManyToManyField(to=Tag, blank=True)
     author = models.ForeignKey("user.User", on_delete=models.CASCADE, null=True, blank=True)
     views = models.IntegerField(default=0, null=True, blank=True)
 
