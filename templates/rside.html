@@ -1,1 +1,51 @@
 {% load static %}
+
+<div class="col-lg-4 sidebar pl-lg-5 ftco-animate">
+    <div class="sidebar-box">
+        <form method="post"  name="search" class="search-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <span class="icon icon-search"></span>
+                <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
+            </div>
+        </form>
+    </div>
+    <div class="sidebar-box ftco-animate">
+        <div class="categories">
+            <h3>Categories</h3>
+            {% for c in categories %}
+            <li><a href="?cat={{ c.slug }}">{{ c.name }} <span class="ion-ios-arrow-forward"></span></a></li>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="sidebar-box ftco-animate">
+        <h3>Recent Blog</h3>
+        {% for article in recent_blogs %}
+        <div class="block-21 mb-4 d-flex">
+            <a class="blog-img mr-4" style="background-image: url({{ article.image.url }});"></a>
+            <div class="text">
+                <h3 class="heading"><a href="{{ article_get_absolute_url }}">{{ article.name }}</a></h3>
+                <div class="meta">
+                    <div><a href="{{ article_get_absolute_url }}"><span class="icon-calendar"></span>{{ article.created_at|date }}</a></div>
+                    <div><a href="{{ article_get_absolute_url }}"><span class="icon-person"></span>{{ article.author.get_full_name }}</a></div>
+                    <div><a href="{{ article_get_absolute_url }}"><span class="icon-chat"></span>{{ article.comment_set.count }}</a></div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="sidebar-box ftco-animate">
+        <h3>Tag Cloud</h3>
+        <div class="tagcloud">
+            {% for t in tags %}
+            <a href="?tag={{ t.slug }}" class="tag-cloud-link">{{ t.name }}</a>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="sidebar-box ftco-animate">
+        <h3>Paragraph</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem
+            necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente
+            consectetur similique, inventore eos fugit cupiditate numquam!</p>
+    </div>
+</div>
