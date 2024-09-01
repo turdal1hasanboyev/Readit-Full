@@ -13,7 +13,10 @@ class User(AbstractUser, BaseModel):
     phone_number = models.CharField(max_length=225, null=True, blank=True, unique=True)
 
     def __str__(self):
-        return self.username
+        if self.get_full_name():
+            return f"{self.id} - {self.get_full_name()}"
+        
+        return f"{self.id} - {self.username}"
 
 
 class Client(BaseModel):
@@ -23,4 +26,4 @@ class Client(BaseModel):
     job = models.CharField(max_length=225, null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return f"{self.id} - {self.name}"

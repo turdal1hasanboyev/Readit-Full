@@ -1,0 +1,25 @@
+from rest_framework.serializers import ModelSerializer
+
+from apps.article.models import Article
+
+
+class ArticleUpdateSerializer(ModelSerializer):
+    class Meta:
+        model = Article
+        fields = [
+            'id',
+            'name',
+            'slug',
+            'description',
+            'image',
+            'tags',
+            'author',
+            'category',
+            'views',
+            "created_at",
+        ]
+
+        extra_kwargs = {
+            'id': {'read_only': True},
+            'created_at': {'read_only': True},
+        }

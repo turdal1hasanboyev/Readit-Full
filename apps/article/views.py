@@ -20,6 +20,7 @@ def single(request, slug):
     cat = request.GET.get('cat')
     tag = request.GET.get('tag')
     query = request.POST.get("search")
+    url = request.META.get('HTTP_REFERER')
 
     article = Article.objects.filter(is_active=True, slug__iexact=slug).first()
 
@@ -41,7 +42,7 @@ def single(request, slug):
         
         comment.save()
 
-        return redirect('single', article.slug)
+        return redirect(url)
 
     context = {
         'article': article,

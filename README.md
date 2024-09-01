@@ -1,3 +1,3 @@
 # Readit
 
-Readit Blog site!
+Readit Blog Full_Stack and Backend Site!
