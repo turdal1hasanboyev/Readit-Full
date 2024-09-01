@@ -12,6 +12,8 @@ from .api.article.ArticleDetail.views import ArticleDetailView
 from .api.article.ArticleList.views import ArticleListView
 from .api.article.ArticleUpdate.views import ArticleUpdateView
 
+from .api.comment.CommentCreate.views import CommentCreateView
+
 
 app_name = 'article'
 
@@ -27,4 +29,6 @@ urlpatterns = [
     path('articledetail/<slug:slug>', ArticleDetailView.as_view(), name='articledetail'),
     path('articlelist/', ArticleListView.as_view(), name='articlelist'),
     path('articleupdate/<slug:slug>', ArticleUpdateView.as_view(), name='articleupdate'),
+
+    path('commentcreate/', CommentCreateView.as_view(), name='comment_create'),
 ]
