@@ -13,6 +13,9 @@ from .api.article.ArticleList.views import ArticleListView
 from .api.article.ArticleUpdate.views import ArticleUpdateView
 
 from .api.comment.CommentCreate.views import CommentCreateView
+from .api.comment.CommentDestroy.view import CommentDestroyView
+from .api.comment.CommentList.views import CommentListView
+from .api.comment.CommentRetrieve.views import CommentRetrieveView
 
 
 app_name = 'article'
@@ -31,4 +34,7 @@ urlpatterns = [
     path('articleupdate/<slug:slug>', ArticleUpdateView.as_view(), name='articleupdate'),
 
     path('commentcreate/', CommentCreateView.as_view(), name='comment_create'),
+    path('commentdestroy/<int:pk>', CommentDestroyView.as_view(), name='comment_destroy'),
+    path('commentlist/', CommentListView.as_view(), name='comment_list'),
+    path('commentretrieve/<int:pk>', CommentRetrieveView.as_view(), name='comment_retrieve'),
 ]

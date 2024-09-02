@@ -70,4 +70,4 @@ class Comment(BaseModel):
     email = models.EmailField(unique=True, null=True, blank=True, max_length=225)
 
     def __str__(self):
-        return self.name
+        return f"{self.id} - {self.name}"
